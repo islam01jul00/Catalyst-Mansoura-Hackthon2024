@@ -444,8 +444,6 @@ app.get("/questions", (req, res) => {
 app.post("/evaluate", (req, res) => {
   const { responses } = req.body;
 
-  console.log("-->", responses);
-
   // Ensure all responses are provided
   if (!responses || Object.keys(responses).length !== questions.length) {
     throw new HttpError(
