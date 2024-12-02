@@ -9,7 +9,7 @@ services:
     environment:
       - PORT=8000
       - JWT_SECRET=secret
-      - MONGO_URI=mongodb://mongo:27017/your_database
+      - MONGO_URI=mongodb://localhost:27017/t
     depends_on:
       - mongo
 
