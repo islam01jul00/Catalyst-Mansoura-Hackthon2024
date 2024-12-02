@@ -8,6 +8,7 @@ import jwt from "jsonwebtoken";
 import asyncHandler from "express-async-handler";
 import fetch from "node-fetch";
 import bcrypt from "bcryptjs";
+import validator from "validator";
 
 const PORT = process.env.PORT;
 const MONGO_URI = process.env.MONGO_URI;
@@ -151,6 +152,24 @@ app.post(
   "/api/signup",
   asyncHandler(async (req, res) => {
     const { name, email, password, gender } = req.body;
+
+    console.log(req.body);
+
+    if (name === undefined) {
+      throw new HttpError(400, "name is required");
+    }
+
+    if (email === undefined) {
+      throw new HttpError(400, "email is required");
+    }
+
+    if (password === undefined) {
+      throw new HttpError(400, "password is required");
+    }
+
+    if (gender === undefined) {
+      throw new HttpError(400, "name is required");
+    }
 
     const user = await User.findOne({ email });
 
